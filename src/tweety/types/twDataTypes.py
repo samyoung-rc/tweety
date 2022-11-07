@@ -2,11 +2,11 @@ import sys
 from dateutil import parser
 import openpyxl
 import dateutil
+import warnings
 
 try:
     import wget
 except ModuleNotFoundError:
-    import warnings
     warnings.warn(' "wget" not found in system ,you will not be able to download the medias')
 WORKBOOK_HEADERS = ['Created on', 'author', 'is_retweet', 'is_reply', 'tweet_id', 'tweet_body', 'language', 'likes',
                     'retweet_count', 'source', 'medias', 'user_mentioned', 'urls', 'hashtags', 'symbols']

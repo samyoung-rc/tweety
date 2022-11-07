@@ -168,7 +168,7 @@ class Twitter:
 
         return Search(keyword, self.request, pages, filter_, wait_time, cursor)
 
-    def tweet_detail(self, identifier: str):
+    def tweet_detail(self, identifier: str, get_threads = True):
         """
         Get Detail of a single tweet
 
@@ -191,7 +191,7 @@ class Twitter:
             for entry in r.json()['data']['threaded_conversation_with_injections']['instructions'][0]['entries']:
                 if str(entry['entryId']).split("-")[0] == "tweet":
                     raw_tweet = entry['content']['itemContent']['tweet_results']['result']
-                    return Tweet(r, raw_tweet, self.request, True)
+                    return Tweet(r, raw_tweet, self.request, get_threads)
         except KeyError:
             raise InvalidTweetIdentifier("The Identifier provided of the tweet is either invalid or the tweet is "
                                          "private")
